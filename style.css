@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFFDD0;
+    background-image: radial-gradient(grey 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+header.home {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid grey;
+}
+
+section {
+    padding: 40px 20px;
+}
+
+.skills ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.skills li {
+    display: inline-block;
+    background: #ddd;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.portfolio-grid img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-grid img:hover {
+    transform: scale(1.05);
+}
+
+.testimonials {
+    background: #f5f5f5;
+    padding: 40px 20px;
+}
+
+.testimonial {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact input, 
+.contact textarea {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.contact button {
+    padding: 10px;
+    background: grey;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
