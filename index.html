@@ -1,1175 +1,765 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Andrew | Graphic Designer & Tech</title>
-    <meta name="description" content="Andrew — CorelDRAW & Photoshop specialist & tech-savvy graphic designer. Portfolio, skills, projects and contact." />
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew's Portfolio - Contact</title>
     <style>
-        :root{
-          --bg: #FFFDD0; /* cream-white */
-          --dot: #d0d0d0; /* dotted grey */
-          --accent: #2b2f6b; /* deep indigo */
-          --muted: #6b6b6b;
-          --glass: rgba(255,255,255,0.6);
-          --card-shadow: 0 8px 30px rgba(43,47,107,0.08);
-          --radius: 14px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Reset / Basic */
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-          margin:0;
-          font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-          background-color:var(--bg);
-          color:#111;
-          -webkit-font-smoothing:antialiased;
-          -moz-osx-font-smoothing:grayscale;
-          line-height:1.45;
-          -webkit-tap-highlight-color:transparent;
-          overflow-y:scroll;
-          background-image:
-            radial-gradient(var(--dot) 1px, transparent 1px);
-          background-size: 12px 12px;
-          background-position: 0 0;
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        a{color:inherit; text-decoration:none}
-        img{max-width:100%; display:block}
-
-        /* Layout */
-        .container{
-          width: min(1180px, 94%);
-          margin: 0 auto;
-          padding: 36px 0;
+        /* Photoshop Gallery Section (from existing code) */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
 
-        header{
-          position: sticky;
-          top: 12px;
-          z-index: 60;
-          backdrop-filter: blur(6px) saturate(120%);
-          background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
-          border-radius: 12px;
-          box-shadow: var(--card-shadow);
-          margin: 12px auto;
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .navwrap{
-          display:flex;
-          align-items:center;
-          gap:18px;
-          padding:12px 20px;
-        }
-        .brand{
-          display:flex; gap:12px; align-items:center;
-        }
-        .logo{
-          width:44px; height:44px; border-radius:10px; overflow:hidden;
-          border: 2px solid rgba(43,47,107,0.08);
-          display:flex; align-items:center; justify-content:center;
-          background: linear-gradient(135deg, rgba(43,47,107,0.08), rgba(43,47,107,0.02));
-        }
-        .brand h1{font-size:16px; margin:0; color:var(--accent); letter-spacing:0.2px}
-        nav{margin-left:auto}
-        .navlinks{display:flex; gap:18px; align-items:center}
-        .navlinks a{padding:8px 12px; border-radius:8px; font-weight:600; color:var(--muted)}
-        .navlinks a:hover{background:rgba(43,47,107,0.06); color:var(--accent)}
 
-        /* Hero */
-        .hero{
-          display:grid;
-          grid-template-columns: 360px 1fr;
-          gap:32px;
-          align-items:center;
-          margin:36px 0;
+        #photoshop-gallery {
+            margin-top: 32px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
         }
-        .card{
-          background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
-          border-radius: var(--radius);
-          padding:18px;
-          box-shadow:var(--card-shadow);
-        }
-        .profile{
-          display:flex; gap:16px; align-items:center;
-        }
-        .profile-photo{
-          width:112px; height:112px; border-radius:16px; overflow:hidden;
-          border:6px solid rgba(255,255,255,0.8); box-shadow:0 6px 18px rgba(0,0,0,0.08);
-          transform:translateY(-10px);
-        }
-        .profile h2{margin:0; font-size:20px; color:var(--accent)}
-        .role{font-size:14px; color:var(--muted); margin-top:6px}
-        .cta-row{display:flex; gap:10px; margin-top:12px}
-        .btn{
-          background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:10px;
-          font-weight:700; cursor:pointer; box-shadow: 0 6px 20px rgba(43,47,107,0.12); transition:transform .18s ease, box-shadow .18s ease;
-        }
-        .btn.secondary{background:transparent; color:var(--accent); border:1px solid rgba(43,47,107,0.08); box-shadow:none}
-        .btn:active{transform:translateY(1px)}
-        .hero-intro p{margin:8px 0 0; color:var(--muted)}
 
-        /* Stats */
-        .stats{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
-        .stat{background:rgba(43,47,107,0.04); padding:10px 12px; border-radius:10px; font-weight:700; color:var(--accent); font-size:14px}
-
-        /* About & Skills */
-        .about-grid{
-          display:grid;
-          grid-template-columns: 1fr 380px;
-          gap:24px;
-          margin-bottom:28px;
-        }
-        .about p{color:var(--muted)}
-        .skills-card{
-          padding:16px; border-radius:12px;
-          display:flex; flex-direction:column; gap:12px;
-        }
-        .skill{
-          display:flex; align-items:center; justify-content:space-between; gap:12px;
-        }
-        .skill .label{font-weight:600; color:var(--muted)}
-        .prog{
-          height:10px; background:rgba(0,0,0,0.06); border-radius:999px; overflow:hidden; flex:1; margin-left:12px;
-        }
-        .prog > i{display:block; height:100%; background:linear-gradient(90deg,var(--accent), #6b9df6); width:20%}
-
-        /* Portfolio */
-        .portfolio-controls{display:flex; gap:10px; align-items:center; margin:10px 0 18px; flex-wrap:wrap}
-        .filter-btn{padding:8px 12px; border-radius:999px; border:1px solid rgba(43,47,107,0.06); background:transparent; cursor:pointer; font-weight:600}
-        .filter-btn.active{background:var(--accent); color:#fff; box-shadow:0 8px 26px rgba(43,47,107,0.12)}
-        .grid{
-          display:grid; gap:14px;
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .project{
-          border-radius:12px; overflow:hidden; position:relative; cursor:pointer;
-          transform:translateY(0); transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .2s;
-        }
-        .project:hover{transform:translateY(-8px); box-shadow: 0 20px 40px rgba(43,47,107,0.08)}
-        .project img{display:block; width:100%; height:220px; object-fit:cover}
-        .overlay{
-          position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
-          padding:14px; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 100%);
-          color:#fff; opacity:0; transition:opacity .2s;
-        }
-        .project:hover .overlay{opacity:1}
-        .overlay h3{margin:0; font-size:16px}
-        .overlay p{margin:6px 0 0; font-size:13px; opacity:0.95}
-
-        /* Photoshop Gallery Styles */
         .photoshop-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 18px;
-          margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .ps-project {
-          position: relative;
-          border-radius: 12px;
-          overflow: hidden;
-          background: rgba(255,255,255,0.9);
-          box-shadow: var(--card-shadow);
-          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-          cursor: pointer;
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #333;
         }
 
         .ps-project:hover {
-          transform: translateY(-8px) scale(1.02);
-          box-shadow: 0 20px 40px rgba(43,47,107,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 150, 0.2);
         }
 
         .ps-image-container {
-          position: relative;
-          aspect-ratio: 4/3;
-          overflow: hidden;
+            position: relative;
+            overflow: hidden;
         }
 
         .ps-image-container img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.4s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
         .ps-project:hover .ps-image-container img {
-          transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .ps-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding: 20px;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 255, 150, 0.8) 0%, rgba(0, 200, 255, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .ps-project:hover .ps-overlay {
-          opacity: 1;
+            opacity: 1;
+        }
+
+        .ps-info {
+            padding: 25px;
         }
 
         .ps-info h4 {
-          margin: 0;
-          font-size: 18px;
-          font-weight: 700;
-          color: white;
+            font-size: 1.4rem;
+            color: #00ff96;
+            margin-bottom: 10px;
         }
 
         .ps-info p {
-          margin: 6px 0 0;
-          font-size: 14px;
-          color: rgba(255,255,255,0.9);
+            color: #cccccc;
+            font-size: 0.95rem;
         }
 
         .ps-expand {
-          align-self: flex-end;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background: rgba(255,255,255,0.2);
-          backdrop-filter: blur(10px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
         .ps-expand:hover {
-          background: rgba(255,255,255,0.3);
-          transform: scale(1.1);
+            background: rgba(0, 255, 150, 0.8);
         }
 
-        /* Enhanced Lightbox Styles */
-        .ps-lightbox {
-          position: fixed;
-          inset: 0;
-          z-index: 1000;
-          display: none;
-          align-items: center;
-          justify-content: center;
+        .ps-expand svg {
+            fill: #ffffff;
         }
 
-        .ps-lightbox.active {
-          display: flex;
+        /* Contact Section */
+        #contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .ps-lightbox-backdrop {
-          position: absolute;
-          inset: 0;
-          background: rgba(0,0,0,0.95);
-          backdrop-filter: blur(10px);
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 255, 150, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 200, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .ps-lightbox-container {
-          position: relative;
-          width: min(95vw, 1200px);
-          max-height: 90vh;
-          background: white;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
         }
 
-        .ps-lightbox-close {
-          position: absolute;
-          top: 16px;
-          right: 16px;
-          z-index: 10;
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background: rgba(0,0,0,0.7);
-          border: none;
-          color: white;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
+        .contact-form-section {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            backdrop-filter: blur(10px);
         }
 
-        .ps-lightbox-close:hover {
-          background: rgba(0,0,0,0.9);
-          transform: scale(1.1);
+        .contact-info-section {
+            padding: 40px 20px;
         }
 
-        .ps-lightbox-content {
-          display: flex;
-          flex-direction: column;
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        .ps-lightbox-content img {
-          width: 100%;
-          max-height: 70vh;
-          object-fit: contain;
-          background: #f8f9fa;
+        .section-subtitle {
+            color: #00ff96;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
-        .ps-lightbox-info {
-          padding: 24px;
-          background: white;
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #00ff96 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
         }
 
-        .ps-lightbox-info h3 {
-          margin: 0 0 8px 0;
-          color: var(--accent);
-          font-size: 24px;
+        .section-description {
+            color: #cccccc;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .ps-lightbox-info p {
-          margin: 0;
-          color: var(--muted);
-          font-size: 16px;
-          line-height: 1.6;
+        /* Form Styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .ps-lightbox-nav {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          padding: 0 20px;
-          pointer-events: none;
+        .form-group {
+            position: relative;
         }
 
-        .ps-nav-btn {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: rgba(0,0,0,0.7);
-          border: none;
-          color: white;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-          pointer-events: all;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ff96;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
-        .ps-nav-btn:hover {
-          background: rgba(0,0,0,0.9);
-          transform: scale(1.1);
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .ps-nav-btn:disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff96;
+            box-shadow: 0 0 20px rgba(0, 255, 150, 0.2);
         }
 
-        .ps-lightbox-counter {
-          position: absolute;
-          bottom: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(0,0,0,0.7);
-          color: white;
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: 14px;
-          font-weight: 600;
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
-        /* Masonry for small screens */
-        @media (max-width:980px){
-          .hero{grid-template-columns: 1fr; padding:0}
-          .about-grid{grid-template-columns:1fr}
-          .grid{grid-template-columns: repeat(2,1fr)}
-          .photoshop-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 14px;
-          }
-        }
-        @media (max-width:768px) {
-          .ps-overlay {
-            padding: 16px;
-          }
-
-          .ps-info h4 {
-            font-size: 16px;
-          }
-
-          .ps-info p {
-            font-size: 13px;
-          }
-
-          .ps-lightbox-container {
-            width: 95vw;
-            margin: 0 10px;
-          }
-
-          .ps-lightbox-info {
-            padding: 20px;
-          }
-
-          .ps-lightbox-nav {
-            padding: 0 10px;
-          }
-        }
-        @media (max-width:560px){
-          .navlinks{display:none}
-          header{border-radius:10px; margin:6px}
-          .grid{grid-template-columns:1fr}
-          .profile-photo{width:86px; height:86px}
-          .container{padding:8px}
-          .photoshop-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .ps-project:hover {
-            transform: translateY(-4px) scale(1.01);
-          }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
         }
 
-        /* Testimonials */
-        .testimonials{display:flex; gap:14px; flex-wrap:wrap}
-        .test-card{flex:1 1 280px; background:linear-gradient(180deg,#fff,#fff); padding:14px; border-radius:12px; box-shadow:var(--card-shadow)}
-        .stars{color:#f2b01e; margin-bottom:8px}
-
-        /* Contact */
-        .contact-grid{display:grid; grid-template-columns: 1fr 380px; gap:20px}
-        .form-row{display:flex; gap:10px}
-        .form-row input, .form-row textarea, .form-row input[type="email"]{
-          width:100%; padding:10px 12px; border-radius:8px; border:1px solid rgba(0,0,0,0.06); font-size:14px;
-        }
-        .submit-wrap{text-align:right}
-
-        /* Footer */
-        footer{margin-top:26px; padding:18px; text-align:center; color:var(--muted); font-size:14px}
-
-        /* Small interactive touches */
-        .chip{padding:6px 8px; border-radius:999px; background:rgba(43,47,107,0.06); font-weight:700; color:var(--accent)}
-        .pill{padding:6px 10px; border-radius:999px; border:1px dashed rgba(43,47,107,0.05); font-weight:600}
-
-        /* Lightbox */
-        .lightbox{
-          position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:120;
-          background:rgba(0,0,0,0.6);
-        }
-        .lightbox.open{display:flex}
-        .lightbox .panel{
-          width:min(92%,1100px); max-height:92vh; overflow:auto; border-radius:12px; background:#fff; padding:16px; position:relative;
-        }
-        .lightbox img{width:100%; height:auto; border-radius:8px}
-        .lb-close{position:absolute; right:12px; top:12px; border-radius:8px; padding:8px 10px; background:rgba(0,0,0,0.06); cursor:pointer; font-weight:700}
-
-        /* subtle animations on load */
-        .fade-up{opacity:0; transform:translateY(10px); animation:fadeUp .7s forwards}
-        .delay-1{animation-delay:.08s}
-        .delay-2{animation-delay:.16s}
-        .delay-3{animation-delay:.24s}
-        @keyframes fadeUp{to{opacity:1; transform:none}}
-
-        /* Animation for gallery load */
-        .ps-project {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: psSlideIn 0.6s ease forwards;
+        .error-message {
+            color: #ff4444;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
         }
 
-        .ps-project:nth-child(1) { animation-delay: 0.05s; }
-        .ps-project:nth-child(2) { animation-delay: 0.1s; }
-        .ps-project:nth-child(3) { animation-delay: 0.15s; }
-        .ps-project:nth-child(4) { animation-delay: 0.2s; }
-        .ps-project:nth-child(5) { animation-delay: 0.25s; }
-        .ps-project:nth-child(6) { animation-delay: 0.3s; }
-        .ps-project:nth-child(7) { animation-delay: 0.35s; }
-        .ps-project:nth-child(8) { animation-delay: 0.4s; }
-        .ps-project:nth-child(9) { animation-delay: 0.45s; }
-        .ps-project:nth-child(10) { animation-delay: 0.5s; }
-        .ps-project:nth-child(11) { animation-delay: 0.55s; }
-        .ps-project:nth-child(12) { animation-delay: 0.6s; }
-        .ps-project:nth-child(13) { animation-delay: 0.65s; }
-        .ps-project:nth-child(14) { animation-delay: 0.7s; }
-        .ps-project:nth-child(15) { animation-delay: 0.75s; }
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #ff4444;
+            animation: shake 0.5s ease-in-out;
+        }
 
-        @keyframes psSlideIn {
-          to {
-            opacity: 1;
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .submit-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #00ff96 0%, #00c8ff 100%);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 150, 0.4);
+        }
+
+        .submit-btn:active {
             transform: translateY(0);
-          }
         }
 
-        /* Tiny helpers */
-        .muted{color:var(--muted)}
-        .center{display:flex; align-items:center; justify-content:center}
+        .submit-btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .submit-btn .btn-text {
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn.loading .loading-spinner {
+            opacity: 1;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 255, 150, 0.1);
+            border-color: #00ff96;
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00ff96 0%, #00c8ff 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #000;
+        }
+
+        .contact-details h4 {
+            color: #00ff96;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: #cccccc;
+            font-size: 1rem;
+        }
+
+        .contact-details a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #00ff96;
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00ff96 0%, #00c8ff 100%);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-section,
+            .contact-info-section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .contact-item {
+                padding: 20px;
+            }
+
+            .contact-item:hover {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-form-section {
+                padding: 25px 15px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px 15px;
+            }
+
+            .submit-btn {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-<!-- Header / Nav -->
-<header>
-    <div class="container navwrap">
-        <div class="brand">
-            <div class="logo" aria-hidden="true">
-                <!-- minimal logo -->
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="2" width="20" height="20" rx="5" fill="#ffffff"/>
-                    <path d="M6 12h12M12 6v12" stroke="#2b2f6b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div>
-                <h1>Andrew — Visual Systems</h1>
-                <div class="muted" style="font-size:12px">CorelDRAW & Photoshop Specialist • Design + Tech</div>
+<!-- Photoshop Gallery Section (continuing from existing code) -->
+<section id="photoshop-gallery" class="fade-up" style="margin-top:52px">
+    <div class="photoshop-grid" id="photoshop-grid">
+        <div class="ps-project" data-title="Concept Art Creation" data-desc="Fantasy concept art with digital painting & atmospheric effects">
+            <div class="ps-image-container">
+                <img src="andrew-photo.jpg" alt="Concept Art Creation" loading="lazy">
+                <div class="ps-overlay">
+                    <div class="ps-info">
+                        <h4>Concept Art Creation</h4>
+                        <p>Digital painting & atmosphere</p>
+                    </div>
+                </div>
+                <button class="ps-expand">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-
-        <nav aria-label="Primary">
-            <div class="navlinks">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#photoshop-gallery">Photoshop</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact" class="pill">Contact</a>
-            </div>
-        </nav>
     </div>
-</header>
+</section>
 
-<main class="container">
-    <!-- HERO -->
-    <section id="home" class="hero fade-up">
-        <aside class="card">
-            <div class="profile">
-                <div class="profile-photo" aria-hidden="true">
-                    <img src="andrew-photo.jpg" alt="Andrew — portrait">
-                </div>
-                <div>
-                    <h2>Hi, I'm Andrew</h2>
-                    <div class="role">Senior Graphic Designer • CorelDRAW & Photoshop Expert • Frontend Enthusiast</div>
-                    <div class="muted" style="font-size:13px; margin-top:6px">Freelancer-based designer who builds visual systems, logos, print & digital experiences that scale. Expert in both vector design and photo manipulation.</div>
+<!-- Contact Section -->
+<section id="contact" class="fade-up">
+    <div class="section-header">
+        <div class="section-subtitle">Get In Touch</div>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-description">
+            Ready to bring your creative vision to life? I'm here to help with your next project.
+            Drop me a message and let's create something amazing together.
+        </p>
+    </div>
 
-                    <div class="stats" aria-hidden="true">
-                        <div class="stat">3+ Years Experience</div>
-                        <div class="stat">150+ Projects</div>
-                        <div class="stat">12 Awards</div>
-                    </div>
-
-                    <div class="cta-row">
-                        <button class="btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">View Work</button>
-                        <button class="btn secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top:12px">
-                <div style="font-weight:700; font-size:13px; color:var(--muted)">Services</div>
-                <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap">
-                    <span class="chip">Brand Identity</span>
-                    <span class="chip">Vector Illustration</span>
-                    <span class="chip">Photo Retouching</span>
-                    <span class="chip">Packaging & Print</span>
-                    <span class="chip">UI/Frontend</span>
-                </div>
-            </div>
-        </aside>
-
-        <div>
-            <div class="card hero-intro">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:18px">
-                    <div>
-                        <h2 style="margin:0; color:var(--accent); font-size:28px">Design that communicates, code that performs.</h2>
-                        <p class="muted" style="margin-top:8px">Andrew blends the precision of vector design in CorelDRAW with advanced photo manipulation in Photoshop and hands-on technical skills to deliver brand systems, packaging, and responsive front-end solutions. Every project is built to be beautiful and practical.</p>
-                        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-                            <span class="pill">CorelDRAW Pro</span>
-                            <span class="pill">Photoshop Advanced</span>
-                            <span class="pill">SVG & Vector Systems</span>
-                            <span class="pill">HTML / CSS / JS</span>
-                        </div>
-                    </div>
-                    <div style="min-width:220px; text-align:right">
-                        <div style="font-weight:800; font-size:34px; color:var(--accent)">Andrew</div>
-                        <div class="muted" style="font-size:13px">Creative technologist</div>
-                    </div>
+    <div class="contact-container">
+        <div class="contact-form-section">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message"></div>
                 </div>
 
-                <div style="margin-top:18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
-                    <div class="chip">Selected Work — Brand & Digital</div>
-                    <div class="muted" style="font-size:13px">Interactive visuals, clean vectors, photo-realistic composites, technology-friendly assets.</div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message"></div>
                 </div>
-            </div>
 
-            <!-- Quick facts / highlights -->
-            <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap;">
-                <div class="card" style="flex:1; min-width:180px">
-                    <div style="font-weight:700; font-size:20px; color:var(--accent)">150+</div>
-                    <div class="muted">Completed Designs</div>
+                <div class="form-group">
+                    <label for="message">Your Message (optional)</label>
+                    <textarea id="message" name="message" placeholder="Tell me about your project..."></textarea>
+                    <div class="error-message"></div>
                 </div>
-                <div class="card" style="flex:1; min-width:180px">
-                    <div style="font-weight:700; font-size:20px; color:var(--accent)">CorelDRAW Certified</div>
-                    <div class="muted">Advanced vector workflows</div>
-                </div>
-                <div class="card" style="flex:1; min-width:180px">
-                    <div style="font-weight:700; font-size:20px; color:var(--accent)">Photoshop Expert</div>
-                    <div class="muted">Photo manipulation & composites</div>
-                </div>
-                <div class="card" style="flex:1; min-width:180px">
-                    <div style="font-weight:700; font-size:20px; color:var(--accent)">Tech Integration</div>
-                    <div class="muted">Design tokens, export-ready SVGs</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ABOUT & SKILLS -->
-    <section id="about" class="about-grid fade-up delay-1" style="margin-top:8px">
-        <div class="card about">
-            <h3 style="margin-top:0; color:var(--accent)">About Andrew</h3>
-            <p class="muted">Andrew is a multidisciplinary graphic designer with a sharp focus on vector systems, photo manipulation, and print production. He has deep experience with CorelDRAW, advanced Photoshop techniques, typography, and pre-press workflows. Over the last decade Andrew has expanded his practice to include front-end development — making designs that translate seamlessly to web and interactive media.</p>
-
-            <h4 style="margin-top:12px">Select Achievements</h4>
-            <ul class="muted" style="margin-top:8px">
-                <li>Lead designer for award-winning packaging for a regional beverage brand (2023).</li>
-                <li>Created photo-realistic product mockups and composites for e-commerce campaigns.</li>
-                <li>Built a reusable SVG icon system used across three startups.</li>
-                <li>Designed and implemented a responsive marketing microsite with pixel-perfect assets.</li>
-            </ul>
-
-            <h4 style="margin-top:12px">Approach</h4>
-            <p class="muted">Andrew follows a systems-driven workflow: research → sketch → vector/photo prototype → responsive spec → export & handoff. He favors clear typography, purposeful color, and assets that are easy to scale and integrate with developers' tooling. Whether working with vectors in CorelDRAW or manipulating photos in Photoshop, every element serves the broader design system.</p>
-
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <div class="loading-spinner"></div>
+                </button>
+            </form>
         </div>
 
-        <aside class="skills-card card fade-up delay-2">
-            <h3 style="margin:0; color:var(--accent)">Skills</h3>
-            <div style="font-size:13px; color:var(--muted); margin-bottom:8px">Core strengths in vector design, photo manipulation + practical technical skills</div>
-
-            <div class="skill">
-                <div class="label">CorelDRAW (Advanced)</div>
-                <div class="prog" aria-hidden="true"><i style="width:92%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">Photoshop (Advanced)</div>
-                <div class="prog" aria-hidden="true"><i style="width:90%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">Vector Illustration</div>
-                <div class="prog" aria-hidden="true"><i style="width:90%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">Photo Retouching</div>
-                <div class="prog" aria-hidden="true"><i style="width:88%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">Brand Identity</div>
-                <div class="prog" aria-hidden="true"><i style="width:88%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">Print Production</div>
-                <div class="prog" aria-hidden="true"><i style="width:84%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">HTML / CSS / JS</div>
-                <div class="prog" aria-hidden="true"><i style="width:76%"></i></div>
-            </div>
-
-            <div class="skill">
-                <div class="label">Design Systems / SVG</div>
-                <div class="prog" aria-hidden="true"><i style="width:80%"></i></div>
-            </div>
-
-            <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap">
-                <span class="pill">Vector-first</span>
-                <span class="pill">Photo-realistic</span>
-                <span class="pill">Responsive</span>
-                <span class="pill">Prepress</span>
-            </div>
-        </aside>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="fade-up delay-3" style="margin-top:8px">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px">
-            <div>
-                <h3 style="margin:0; color:var(--accent)">Portfolio</h3>
-                <div class="muted" style="font-size:13px">Selected projects — icons, packaging, brand systems, photo composites, UI visuals</div>
-            </div>
-            <div class="portfolio-controls">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="packaging">Packaging</button>
-                <button class="filter-btn" data-filter="photo">Photo/Digital</button>
-                <button class="filter-btn" data-filter="illustration">Illustration</button>
-                <button class="filter-btn" data-filter="ui">UI / Web</button>
-            </div>
-        </div>
-
-        <div class="grid" id="portfolio-grid" role="list">
-            <!-- 18 projects (images photo-1.jpg ... photo-18.jpg) -->
-            <!-- Each project card includes dataset attributes for filter + title + description -->
-            <!-- We'll include realistic AI-generated titles and descriptions -->
-            <!-- Project 1 -->
-            <article class="project" data-category="branding" data-title="Kisima Coffee — Brand Refresh" data-desc="Complete brand refresh with vector-based logotype and packaging system.">
-                <img src="photo-1.jpg" alt="Kisima Coffee — Brand Refresh">
-                <div class="overlay">
-                    <h3>Kisima Coffee — Brand Refresh</h3>
-                    <p>Complete brand refresh with vector logotype and packaging system.</p>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project" data-category="packaging" data-title="Savanna Juice — Limited Edition" data-desc="Seasonal packaging with die-lines and CMYK-optimized artwork.">
-                <img src="photo-2.jpg" alt="Savanna Juice — Limited Edition">
-                <div class="overlay">
-                    <h3>Savanna Juice — Limited Edition</h3>
-                    <p>Seasonal packaging with die-lines and CMYK-optimized artwork.</p>
-                </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project" data-category="illustration" data-title="Urban Icons — Vector Set" data-desc="Modular vector icon set for urban mobility app.">
-                <img src="photo-3.jpg" alt="Urban Icons — Vector Set">
-                <div class="overlay">
-                    <h3>Urban Icons — Vector Set</h3>
-                    <p>Modular vector icon set for urban mobility app.</p>
-                </div>
-            </article>
-
-            <!-- Project 4 -->
-            <article class="project" data-category="ui" data-title="Pulse — Landing Page Design" data-desc="Responsive landing concept with exportable SVG hero illustration.">
-                <img src="photo-4.jpg" alt="Pulse — Landing Page Design">
-                <div class="overlay">
-                    <h3>Pulse — Landing Page Design</h3>
-                    <p>Responsive landing concept with exportable SVG hero illustration.</p>
-                </div>
-            </article>
-
-            <!-- Project 5 -->
-            <article class="project" data-category="branding" data-title="Nuru Health — Identity" data-desc="Logo system and stationeries for healthcare startup.">
-                <img src="photo-5.jpg" alt="Nuru Health — Identity">
-                <div class="overlay">
-                    <h3>Nuru Health — Identity</h3>
-                    <p>Logo system and stationeries for healthcare startup.</p>
-                </div>
-            </article>
-
-            <!-- Project 6 -->
-            <article class="project" data-category="packaging" data-title="Highland Tea — Tin Series" data-desc="Vector patterns and metallic treatments prepared for print.">
-                <img src="photo-6.jpg" alt="Highland Tea — Tin Series">
-                <div class="overlay">
-                    <h3>Highland Tea — Tin Series</h3>
-                    <p>Vector patterns and metallic treatments prepared for print.</p>
-                </div>
-            </article>
-
-            <!-- Project 7 -->
-            <article class="project" data-category="illustration" data-title="Festival Poster Series" data-desc="Bold poster illustrations for a cultural festival campaign.">
-                <img src="photo-7.jpg" alt="Festival Poster Series">
-                <div class="overlay">
-                    <h3>Festival Poster Series</h3>
-                    <p>Bold poster illustrations for a cultural festival campaign.</p>
-                </div>
-            </article>
-
-            <!-- Project 8 -->
-            <article class="project" data-category="ui" data-title="DashBoard UI Kit" data-desc="Clean UI kit with vector components and tokens for dev handoff.">
-                <img src="photo-8.jpg" alt="DashBoard UI Kit">
-                <div class="overlay">
-                    <h3>DashBoard UI Kit</h3>
-                    <p>Clean UI kit with vector components and tokens for dev handoff.</p>
-                </div>
-            </article>
-
-            <!-- Project 9 -->
-            <article class="project" data-category="branding" data-title="Mazi Waters — Label Design" data-desc="Label and secondary packaging with CMYK separations.">
-                <img src="photo-9.jpg" alt="Mazi Waters — Label Design">
-                <div class="overlay">
-                    <h3>Mazi Waters — Label Design</h3>
-                    <p>Label and secondary packaging with CMYK separations.</p>
-                </div>
-            </article>
-
-            <!-- Project 10 -->
-            <article class="project" data-category="packaging" data-title="Bakery Box System" data-desc="Structural dielines, spot varnish design and vector textures.">
-                <img src="photo-10.jpg" alt="Bakery Box System">
-                <div class="overlay">
-                    <h3>Bakery Box System</h3>
-                    <p>Structural dielines, spot varnish design and vector textures.</p>
-                </div>
-            </article>
-
-            <!-- Project 11 -->
-            <article class="project" data-category="illustration" data-title="Educational Illustrations" data-desc="Character and scene illustrations used in print workbooks.">
-                <img src="photo-11.jpg" alt="Educational Illustrations">
-                <div class="overlay">
-                    <h3>Educational Illustrations</h3>
-                    <p>Character and scene illustrations used in print workbooks.</p>
-                </div>
-            </article>
-
-            <!-- Project 12 -->
-            <article class="project" data-category="ui" data-title="Portfolio Microsite" data-desc="Micro-interactions and SVG animations for a portfolio demo.">
-                <img src="photo-12.jpg" alt="Portfolio Microsite">
-                <div class="overlay">
-                    <h3>Portfolio Microsite</h3>
-                    <p>Micro-interactions and SVG animations for a portfolio demo.</p>
-                </div>
-            </article>
-
-            <!-- Project 13 -->
-            <article class="project" data-category="branding" data-title="Kijiji Social — Campaign Pack" data-desc="Campaign assets, banners and print-ready flyers.">
-                <img src="photo-13.jpg" alt="Kijiji Social — Campaign Pack">
-                <div class="overlay">
-                    <h3>Kijiji Social — Campaign Pack</h3>
-                    <p>Campaign assets, banners and print-ready flyers.</p>
-                </div>
-            </article>
-
-            <!-- Project 14 -->
-            <article class="project" data-category="packaging" data-title="EcoBoxes — Sustainable Pack" data-desc="Minimal, recyclable packaging with cut guides and vector textures.">
-                <img src="photo-14.jpg" alt="EcoBoxes — Sustainable Pack">
-                <div class="overlay">
-                    <h3>EcoBoxes — Sustainable Pack</h3>
-                    <p>Minimal, recyclable packaging with cut guides.</p>
-                </div>
-            </article>
-
-            <!-- Project 15 -->
-            <article class="project" data-category="illustration" data-title="Map Illustration — City Guide" data-desc="Stylized vector map used in printed city guide and web hero.">
-                <img src="photo-15.jpg" alt="Map Illustration — City Guide">
-                <div class="overlay">
-                    <h3>Map Illustration — City Guide</h3>
-                    <p>Stylized vector map used in printed city guide and web hero.</p>
-                </div>
-            </article>
-
-            <!-- Project 16 -->
-            <article class="project" data-category="photo" data-title="Product Photography Composite" data-desc="High-end product composite with advanced lighting and retouching in Photoshop.">
-                <img src="photo-16.jpg" alt="Product Photography Composite">
-                <div class="overlay">
-                    <h3>Product Photography Composite</h3>
-                    <p>High-end product composite with advanced lighting and retouching in Photoshop.</p>
-                </div>
-            </article>
-
-            <!-- Project 17 -->
-            <article class="project" data-category="photo" data-title="Fashion Portrait Retouching" data-desc="Professional portrait retouching with skin enhancement and color grading.">
-                <img src="photo-17.jpg" alt="Fashion Portrait Retouching">
-                <div class="overlay">
-                    <h3>Fashion Portrait Retouching</h3>
-                    <p>Professional portrait retouching with skin enhancement and color grading.</p>
-                </div>
-            </article>
-
-            <!-- Project 18 -->
-            <article class="project" data-category="photo" data-title="E-commerce Product Mockups" data-desc="Photo-realistic mockups and lifestyle composites for online retail campaigns.">
-                <img src="photo-18.jpg" alt="E-commerce Product Mockups">
-                <div class="overlay">
-                    <h3>E-commerce Product Mockups</h3>
-                    <p>Photo-realistic mockups and lifestyle composites for online retail campaigns.</p>
-                </div>
-            </article>
-        </div>
-
-        <!-- lightbox -->
-        <div class="lightbox" id="lightbox" aria-hidden="true">
-            <div class="panel" role="dialog" aria-label="Project viewer">
-                <button class="lb-close" id="lb-close">Close ✕</button>
-                <div id="lb-content">
-                    <!-- filled by JS -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PHOTOSHOP GALLERY SECTION -->
-    <section id="photoshop-gallery" class="fade-up" style="margin-top:32px">
-        <div style="text-align:center; margin-bottom:28px">
-            <h3 style="margin:0; color:var(--accent); font-size:32px">Photoshop Mastery</h3>
-            <div class="muted" style="font-size:15px; margin-top:8px">Professional photo manipulation, retouching & digital composites</div>
-            <div style="margin-top:12px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
-                <span class="chip">Photo Retouching</span>
-                <span class="chip">Digital Composites</span>
-                <span class="chip">Color Grading</span>
-                <span class="chip">Product Photography</span>
-            </div>
-        </div>
-
-        <!-- Gallery Grid -->
-        <div class="photoshop-grid" id="photoshop-grid">
-            <!-- Project 1 -->
-            <div class="ps-project" data-title="Fashion Portrait Retouching" data-desc="Professional beauty retouching with advanced skin work, color grading, and lighting enhancement.">
-                <div class="ps-image-container">
-                    <img src="pic1.jpg" alt="Fashion Portrait Retouching" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Fashion Portrait Retouching</h4>
-                            <p>Beauty retouching & color grading</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
+        <div class="contact-info-section">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Andrew's Address</h4>
+                        <p>KIBABII UNIVERSITY</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project 2 -->
-            <div class="ps-project" data-title="Product Composite" data-desc="High-end product photography with seamless background replacement and lighting adjustments.">
-                <div class="ps-image-container">
-                    <img src="pic2.jpg" alt="Product Composite" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Product Composite</h4>
-                            <p>Background replacement & lighting</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Call Us</h4>
+                        <p><a href="tel:+254714513051"></a>+254714513051</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project 3 -->
-            <div class="ps-project" data-title="Architectural Visualization" data-desc="Photo-realistic architectural rendering with atmospheric effects and precise perspective correction.">
-                <div class="ps-image-container">
-                    <img src="pic3.jpg" alt="Architectural Visualization" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Architectural Visualization</h4>
-                            <p>Rendering & atmosphere effects</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
                     </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="ps-project" data-title="E-commerce Mockups" data-desc="Product lifestyle shots with environmental compositing and brand-consistent color schemes.">
-                <div class="ps-image-container">
-                    <img src="pic4.jpg" alt="E-commerce Mockups" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>E-commerce Mockups</h4>
-                            <p>Lifestyle shots & compositing</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="ps-project" data-title="Digital Art Manipulation" data-desc="Creative photo manipulation with surreal elements, advanced masking, and artistic filters.">
-                <div class="ps-image-container">
-                    <img src="pic5.jpg" alt="Digital Art Manipulation" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Digital Art Manipulation</h4>
-                            <p>Surreal elements & artistic filters</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="ps-project" data-title="Wedding Photography Enhancement" data-desc="Professional wedding photo retouching with skin smoothing, color correction, and mood enhancement.">
-                <div class="ps-image-container">
-                    <img src="pic6.jpg" alt="Wedding Photography Enhancement" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Wedding Photo Enhancement</h4>
-                            <p>Retouching & mood enhancement</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 7 -->
-            <div class="ps-project" data-title="Corporate Headshots" data-desc="Business portrait retouching with natural skin enhancement and professional background optimization.">
-                <div class="ps-image-container">
-                    <img src="pic7.jpg" alt="Corporate Headshots" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Corporate Headshots</h4>
-                            <p>Professional portrait retouching</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 8 -->
-            <div class="ps-project" data-title="Food Photography Styling" data-desc="Appetizing food photography with color enhancement, texture optimization, and composition refinement.">
-                <div class="ps-image-container">
-                    <img src="pic8.jpg" alt="Food Photography Styling" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Food Photography Styling</h4>
-                            <p>Color enhancement & texture work</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 9 -->
-            <div class="ps-project" data-title="Landscape Enhancement" data-desc="Nature photography with HDR processing, sky replacement, and natural color grading techniques.">
-                <div class="ps-image-container">
-                    <img src="pic9.jpg" alt="Landscape Enhancement" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Landscape Enhancement</h4>
-                            <p>HDR processing & sky replacement</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 10 -->
-            <div class="ps-project" data-title="Brand Campaign Composite" data-desc="Multi-element brand campaign imagery with complex compositing and brand-consistent styling.">
-                <div class="ps-image-container">
-                    <img src="pic10.jpg" alt="Brand Campaign Composite" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Brand Campaign Composite</h4>
-                            <p>Complex compositing & branding</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 11 -->
-            <div class="ps-project" data-title="Fashion Lookbook" data-desc="High-fashion editorial retouching with advanced color grading and atmospheric mood creation.">
-                <div class="ps-image-container">
-                    <img src="pic11.jpg" alt="Fashion Lookbook" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Fashion Lookbook</h4>
-                            <p>Editorial retouching & mood creation</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 12 -->
-            <div class="ps-project" data-title="Sports Photography Action" data-desc="Dynamic sports photography with motion blur effects, dramatic lighting, and impact enhancement.">
-                <div class="ps-image-container">
-                    <img src="pic12.jpg" alt="Sports Photography Action" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Sports Photography Action</h4>
-                            <p>Motion effects & dramatic lighting</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 13 -->
-            <div class="ps-project" data-title="Magazine Cover Design" data-desc="Professional magazine cover with typography integration, color harmony, and visual hierarchy.">
-                <div class="ps-image-container">
-                    <img src="pic13.jpg" alt="Magazine Cover Design" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Magazine Cover Design</h4>
-                            <p>Typography & visual hierarchy</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 14 -->
-            <div class="ps-project" data-title="Automotive Photography" data-desc="Luxury car photography with reflections enhancement, paint correction, and environmental integration.">
-                <div class="ps-image-container">
-                    <img src="pic14.jpg" alt="Automotive Photography" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Automotive Photography</h4>
-                            <p>Reflections & paint enhancement</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 15 -->
-            <div class="ps-project" data-title="Concept Art Creation" data-desc="Fantasy concept art with digital painting techniques, advanced blending, and atmospheric perspective.">
-                <div class="ps-image-container">
-                    <img src="pic15.jpg" alt="Concept Art Creation" loading="lazy">
-                    <div class="ps-overlay">
-                        <div class="ps-info">
-                            <h4>Concept Art Creation</h4>
-                            <p>Digital painting & atmosphere</p>
-                        </div>
-                        <div class="ps-expand">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                            </svg>
-                        </div>
+                    <div class="contact-details">
+                        <h4>Mail Us</h4>
+                        <p><a href="andrewxwanjala@gmail.com"> andrewxwanjala@gmail.com </a></p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<div id="successMessage" class="success-message">
+    Message sent successfully! I'll get back to you soon.
+</div>
+
+<script>
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Form handling
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const successMessage = document.getElementById('successMessage');
+
+    // Validation functions
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function validateName(name) {
+        return name.trim().length >= 2;
+    }
+
+    function showError(field, message) {
+        const formGroup = field.closest('.form-group');
+        const errorElement = formGroup.querySelector('.error-message');
+
+        formGroup.classList.add('error');
+        errorElement.textContent = message;
+
+        // Remove error after 3 seconds
+        setTimeout(() => {
+            formGroup.classList.remove('error');
+        }, 3000);
+    }
+
+    function clearErrors() {
+        document.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('error');
+        });
+    }
+
+    function showSuccess() {
+        successMessage.classList.add('show');
+        setTimeout(() => {
+            successMessage.classList.remove('show');
+        }, 4000);
+    }
+
+    function setLoading(loading) {
+        if (loading) {
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+        } else {
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+        }
+    }
+
+    // Form submission
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
+
+        let hasErrors = false;
+
+        // Validate name
+        if (!validateName(name)) {
+            showError(contactForm.querySelector('#name'), 'Name must be at least 2 characters long');
+            hasErrors = true;
+        }
+
+        // Validate email
+        if (!validateEmail(email)) {
+            showError(contactForm.querySelector('#email'), 'Please enter a valid email address');
+            hasErrors = true;
+        }
+
+        if (hasErrors) {
+            return;
+        }
+
+        // Simulate form submission
+        setLoading(true);
+
+        try {
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Here you would typically send the data to your backend
+            console.log('Form data:', { name, email, message });
+
+            showSuccess();
+            contactForm.reset();
+
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showError(contactForm.querySelector('#email'), 'Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    });
+
+    // Real-time validation
+    contactForm.querySelector('#name').addEventListener('blur', (e) => {
+        if (!validateName(e.target.value)) {
+            showError(e.target, 'Name must be at least 2 characters long');
+        } else {
+            e.target.closest('.form-group').classList.remove('error');
+        }
+    });
+
+    contactForm.querySelector('#email').addEventListener('blur', (e) => {
+        if (e.target.value && !validateEmail(e.target.value)) {
+            showError(e.target, 'Please enter a valid email address');
+        } else {
+            e.target.closest('.form-group').classList.remove('error');
+        }
+    });
+
+    // Clear errors on input
+    contactForm.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('input', () => {
+            field.closest('.form-group').classList.remove('error');
+        });
+    });
+
+    // Photoshop project expand functionality
+    document.querySelectorAll('.ps-expand').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const project = button.closest('.ps-project');
+            const title = project.dataset.title;
+            const desc = project.dataset.desc;
+
+            // You can implement a modal or lightbox here
+            alert(`${title}\n\n${desc}`);
+        });
+    });
+
+    // Smooth scrolling for any internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add some interactive effects
+    document.querySelectorAll('.contact-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'translateX(10px) scale(1.02)';
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateX(0) scale(1)';
+        });
+    });
+
+    // Initialize animations on page load
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.querySelectorAll('.fade-up').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
+    });
+</script>
+</body>
+</html>
